@@ -92,6 +92,16 @@ class _TaskListScreenState extends State<TaskListScreen> {
       appBar: AppBar(
         title: const Text('Task Manager', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.sort, color: Colors.white),
+            onPressed: () {
+              setState(() {
+                _sortTasks();
+              });
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -144,6 +154,20 @@ class _TaskListScreenState extends State<TaskListScreen> {
               ),
             ),
             const SizedBox(height: 15),
+            ElevatedButton.icon(
+              onPressed: () {
+                setState(() {
+                  _sortTasks();
+                });
+              },
+              icon: const Icon(Icons.sort),
+              label: const Text('Sort by Priority'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 10),
             Expanded(
               child: _tasks.isEmpty
                   ? const Center(
